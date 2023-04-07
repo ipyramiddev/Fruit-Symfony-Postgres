@@ -88,11 +88,11 @@ class FruitController extends AbstractController
     public function sendEmail()
     {
         $email = (new Email())
-            ->from('levyeugene0183@gmail.com')
-            ->to('svendev520@gmail.com')
-            ->subject('Test email')
-            ->text('This is a test email');
-
+            ->from($_ENV['EMAIL_FROM'])
+            ->to($_ENV['EMAIL_TO'])
+            ->subject('Fruit Database initialized!')
+            ->text('This is a reminder message from Fruit service for initialization of database.');
+        
         $this->mailer->send($email);
     }
 }
